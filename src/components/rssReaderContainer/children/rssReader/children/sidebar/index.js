@@ -1,5 +1,6 @@
 import React, {Component} from 'react'
-import Styles from './styles'
+import {Search} from './children'
+import Styles from './styles.scss'
 
 class Sidebar extends Component {
   constructor (props) {
@@ -9,9 +10,9 @@ class Sidebar extends Component {
 
   render () {
     return (
-      <aside style={Styles.sidebar}>
-        <h1 style={Styles.header}>Content Generator</h1>
-        <input type={'search'} placeholder={'Filter your feeds ...'} />
+      <aside className={Styles.sidebar}>
+        <h1 className={Styles.header}>Content Generator</h1>
+        <Search />
       </aside>
     )
   }

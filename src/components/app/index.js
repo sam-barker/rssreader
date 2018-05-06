@@ -4,20 +4,21 @@ import RSSReaderContainer from '../rssReaderContainer'
 // import {fetchUsers} from '../../data/actionCreators/users'
 // import UserList from '../userListContainer'
 
-import WebFont from 'webfontloader'
+// import WebFont from 'webfontloader'
+// import Styles from './styles.scss'
 
 /**
  * Application class
  */
 class App extends Component {
-  constructor (props) {
-    super(props)
-    WebFont.load({
-      google: {
-        families: ['Lato:300,400,700', 'sans-serif']
-      }
-    })
-  }
+  // constructor (props) {
+  //   super(props)
+  //   // WebFont.load({
+  //   //   google: {
+  //   //     families: ['Lato:300,400,700', 'sans-serif']
+  //   //   }
+  //   // })
+  // }
 
   componentWillMount () {
     this.unsubscribe = Store.subscribe(() => { })
