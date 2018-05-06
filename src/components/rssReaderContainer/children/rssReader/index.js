@@ -1,16 +1,13 @@
 import React, {Component} from 'react'
-import PropTypes from 'prop-types'
-import {Sidebar} from './children'
-import Styles from './styles'
+import {Sidebar, Feed} from './children'
+import Styles from './styles.scss'
 
 class RSSReader extends Component {
   render () {
     return (
-      <div style={Styles.container}>
+      <div className={Styles.rssReaderContainer}>
         <Sidebar />
-        <div style={{flexGrow: 4}}>
-          Something Else
-        </div>
+        <Feed />
       </div>
     )
   }

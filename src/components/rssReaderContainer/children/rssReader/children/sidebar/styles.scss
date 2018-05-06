@@ -1,0 +1,27 @@
+$searchMargin: 7.5%;
+$backgroundColour: #545e69;
+$searchTextColour: #9CA3A9;
+
+@mixin placeholder {
+  color: $searchTextColour;
+  caret-color: $searchTextColour;
+  font-style: italic;
+  font-size: 1.125em;
+}
+
+.sidebar {
+  background-color: $backgroundColour;
+  flex-grow: 1;
+  ::placeholder { @include placeholder }
+  :-ms-input-placeholder { @include placeholder }
+  ::-ms-input-placeholder { @include placeholder }
+}
+
+.header {
+  text-align: center;
+  font-size: 1.25em;
+  color: white;
+  font-weight: 300;
+  margin-top: 2.5em;
+  margin-bottom: 2.5em;
+}
