@@ -4,11 +4,15 @@ $lineHeight: 25px;
   width: 95%;
   text-align: left;
   color: white;
-  padding-bottom: 10px;
+  margin-bottom: 10px;
   margin-left: 7.5px;
   height: $lineHeight;
   text-align: left;
   cursor: pointer;
+
+  &:hover > p {
+    color: #9CA3A9;
+  }
 }
 
 .feedName {
