@@ -1,0 +1,25 @@
+$circleDimension: 15px;
+$circleColour: #cccccc;
+
+.container {
+  float: left;
+  padding-top: 3px;
+}
+
+.circle {
+  border: 3px solid $circleColour;
+  border-radius: 50%;
+  cursor: pointer;
+  height: $circleDimension;
+  width: $circleDimension;
+}
+
+.circleChecked {
+  @extend .circle;
+  background-color: $circleColour;  
+  &:after { opacity: 1 }
+}
+
+.input {
+  visibility: hidden;
+}

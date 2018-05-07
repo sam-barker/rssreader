@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-import {SearchIcon} from './children'
+import {SearchIcon} from '../../../../../../../icons'
 import Styles from './styles.scss'
 
 class Sidebar extends Component {
