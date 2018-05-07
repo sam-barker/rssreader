@@ -1,0 +1,45 @@
+$inputMargin: 5%;
+$backgroundColour: #545e69;
+$inputTextColour: #9CA3A9;
+
+@mixin placeholder {
+  color: $inputTextColour;
+  caret-color: $inputTextColour;
+  font-style: italic;
+  font-size: 1.125em;
+}
+
+.inputContainer {
+  display: inline-block;
+  width: 100%;
+  margin-bottom: 10px;
+  ::placeholder { @include placeholder }
+  :-ms-input-placeholder { @include placeholder }
+  ::-ms-input-placeholder { @include placeholder }
+}
+
+.input {
+  width: 98%;
+  height: 1.5em;
+  border-radius: 1.5em;
+  border: 2px solid #798189;
+  background-color: #535a63;
+  cursor: text;
+  display: inline-block;
+}
+
+.inputFocused {
+  @extend .input;
+  background-color: #474E56;
+}
+
+.inputContent {
+  width: 90%;
+  height: 100%;
+  background-color: transparent;
+  border: none;
+  height: inherit;
+  margin-left: 5%;
+  color: $inputTextColour;
+  &:focus { outline: none; }
+}
