@@ -10,8 +10,10 @@ class SubmitButton extends Component {
 
   render () {
     return (
-      <div className={Styles[`button${this.props.size}`]}>
-        <button className={Styles.button}>
+      <div
+        className={Styles[`button${this.props.size}`]}
+        onClick={this.props.onClick}>
+        <button className={Styles.button} disabled={this.props.disabled}>
           {this.props.text}
         </button>
       </div>
@@ -21,12 +23,16 @@ class SubmitButton extends Component {
 
 SubmitButton.defaultProps = {
   text: 'Submit',
-  size: 'full'
+  size: 'full',
+  onClick: () => {},
+  disabled: false
 }
 
 SubmitButton.propTypes = {
   text: PropTypes.string,
-  size: PropTypes.oneOf(['small', 'medium', 'large', 'xlarge', 'full'])
+  size: PropTypes.oneOf(['small', 'medium', 'large', 'xlarge', 'full']),
+  onClick: PropTypes.func,
+  disabled: PropTypes.bool
 }
 
 export default SubmitButton

@@ -1,4 +1,5 @@
 import React, {Component} from 'react'
+import PropTypes from 'prop-types'
 import {Search, FeedList, AddFeed} from './children'
 import Styles from './styles.scss'
 
@@ -14,12 +15,22 @@ class Sidebar extends Component {
         <div className={Styles.sidebarContent}>
           <h1 className={Styles.header}>Content Generator</h1>
           <Search />
-          <FeedList />
-          <AddFeed />
+          <FeedList feeds={this.props.feeds} removeFeed={this.props.removeFeed} />
+          <AddFeed addFeed={this.props.addFeed} />
         </div>
       </aside>
     )
   }
+}
+
+Sidebar.defaultProps = {
+  feeds: []
+}
+
+Sidebar.propTypes = {
+  feeds: PropTypes.arrayOf(PropTypes.object),
+  addFeed: PropTypes.func.isRequired,
+  removeFeed: PropTypes.func.isRequired
 }
 
 export default Sidebar
