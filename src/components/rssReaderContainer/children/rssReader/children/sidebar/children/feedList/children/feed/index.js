@@ -20,7 +20,13 @@ class Feed extends Component {
 
   renderRemoveIcon () {
     return (
-      <div className={Styles.removeIconContainer}>
+      <div
+        onClick={(e) => {
+          e.stopPropagation()
+          console.log('removing feed')
+          this.props.removeFeed(this.props.name, this.props.url)
+        }}
+        className={Styles.removeIconContainer}>
         <RemoveIcon />
       </div>
     )
@@ -30,7 +36,7 @@ class Feed extends Component {
     const {name} = this.props
     const {toggled} = this.state
     return (
-      <div className={Styles.feed} onClick={this.onToggle}>
+      <div className={Styles.feed}>
         <Toggle toggled={toggled} onToggle={this.onToggle} />
         <p className={Styles.feedName}>{name}</p>
         {this.renderRemoveIcon()}
@@ -40,11 +46,14 @@ class Feed extends Component {
 }
 
 Feed.defaultProps = {
-  name: ''
+  name: '',
+  url: ''
 }
 
 Feed.propTypes = {
-  name: PropTypes.string
+  name: PropTypes.string,
+  url: PropTypes.string,
+  removeFeed: PropTypes.func.isRequired
 }
 
 export default Feed
