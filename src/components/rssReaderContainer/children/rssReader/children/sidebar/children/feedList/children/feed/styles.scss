@@ -1,0 +1,25 @@
+$lineHeight: 25px;
+
+.feed {
+  width: 95%;
+  text-align: left;
+  color: white;
+  padding-bottom: 10px;
+  margin-left: 7.5px;
+  height: $lineHeight;
+  text-align: left;
+  cursor: pointer;
+}
+
+.feedName {
+  display: inline-block;
+  margin: 0;
+  line-height: $lineHeight;
+  font-size: 0.8125em;
+  margin-left: 1em;
+}
+
+.removeIconContainer {
+  float: right;
+  padding-top: 3px;
+}
