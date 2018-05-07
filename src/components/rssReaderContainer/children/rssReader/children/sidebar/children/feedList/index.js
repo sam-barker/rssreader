@@ -10,52 +10,30 @@ class FeedList extends Component {
   }
 
   renderFeed (feed) {
-    return (
-      <Feed key={`feed_${feed.name}`} {...feed} />
+    return !feed ? null : (
+      <Feed
+        key={`feed_${feed.name}`}
+        {...feed}
+        removeFeed={this.props.removeFeed} />
     )
   }
 
   render () {
     return (
       <div className={Styles.feedListContainer}>
-        {this.props.feeds.map(this.renderFeed)}
+        {this.props.feeds.map(this.renderFeed.bind(this))}
       </div>
     )
   }
 }
 
-// TODO: Revert to empty array
 FeedList.defaultProps = {
-  feeds: [
-    {
-      name: 'Adweek'
-    },
-    {
-      name: 'BBC Tech'
-    },
-    {
-      name: 'Digital Weekly'
-    },
-    {
-      name: 'Marketing Week'
-    },
-    {
-      name: 'Telegraph & Argus'
-    },
-    {
-      name: 'The Guardian Tech'
-    },
-    {
-      name: 'Dezeen'
-    },
-    {
-      name: 'The Times'
-    }
-  ]
+  feeds: []
 }
 
 FeedList.propTypes = {
-  feeds: PropTypes.arrayOf(PropTypes.object)
+  feeds: PropTypes.arrayOf(PropTypes.object),
+  removeFeed: PropTypes.func.isRequired
 }
 
 export default FeedList

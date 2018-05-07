@@ -11,15 +11,6 @@ import RSSReaderContainer from '../rssReaderContainer'
  * Application class
  */
 class App extends Component {
-  // constructor (props) {
-  //   super(props)
-  //   // WebFont.load({
-  //   //   google: {
-  //   //     families: ['Lato:300,400,700', 'sans-serif']
-  //   //   }
-  //   // })
-  // }
-
   componentWillMount () {
     this.unsubscribe = Store.subscribe(() => { })
     // Store.dispatch(fetchUsers())
