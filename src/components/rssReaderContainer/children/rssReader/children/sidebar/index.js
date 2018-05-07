@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-import {Search, FeedList} from './children'
+import {Search, FeedList, AddFeed} from './children'
 import Styles from './styles.scss'
 
 class Sidebar extends Component {
@@ -11,9 +11,12 @@ class Sidebar extends Component {
   render () {
     return (
       <aside className={Styles.sidebar}>
-        <h1 className={Styles.header}>Content Generator</h1>
-        <Search />
-        <FeedList />
+        <div className={Styles.sidebarContent}>
+          <h1 className={Styles.header}>Content Generator</h1>
+          <Search />
+          <FeedList />
+          <AddFeed />
+        </div>
       </aside>
     )
   }

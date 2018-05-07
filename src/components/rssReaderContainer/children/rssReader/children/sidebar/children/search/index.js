@@ -1,47 +1,18 @@
 import React, {Component} from 'react'
 import {SearchIcon} from '../../../../../../../icons'
+import {InputField} from '../../../../../../../ui'
 import Styles from './styles.scss'
 
 class Sidebar extends Component {
   constructor (props) {
     super(props)
-    this.state = {
-      focus: false
-    }
-    this.inputRef = this.inputRef.bind(this)
-    this.onSearchClick = this.onSearchClick.bind(this)
-    this.onInputBlur = this.onFocusChange.bind(this, false)
-    this.onInputFocus = this.onFocusChange.bind(this, true)
+    this.state = {}
   }
 
-  get searchStyle () {
-    return this.state.focus ? Styles.searchFocused : Styles.search
-  }
-
-  onSearchClick () {
-    this.input.focus()
-  }
-
-  onFocusChange (focus) {
-    this.setState({focus})
-  }
-
-  inputRef (input) {
-    this.input = input
-  }
-
-  renderSearchBar () {
+  renderSearchInput () {
     return (
-      <div
-        onClick={this.onSearchClick}
-        className={this.searchStyle}>
-        <input
-          ref={this.inputRef}
-          onFocus={this.onInputFocus}
-          onBlur={this.onInputBlur}
-          className={Styles.searchContent}
-          type={'search'}
-          placeholder={'Filter your feeds ...'} />
+      <div className={Styles.searchInputField}>
+        <InputField type={'search'} placeholder={'Filter your feeds ...'} />
       </div>
     )
   }
@@ -57,7 +28,7 @@ class Sidebar extends Component {
   render () {
     return (
       <div className={Styles.searchContainer}>
-        {this.renderSearchBar()}
+        {this.renderSearchInput()}
         {this.renderSearchIcon()}
       </div>
     )
