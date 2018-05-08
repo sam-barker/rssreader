@@ -14,7 +14,7 @@ class Sidebar extends Component {
       <aside className={Styles.sidebar}>
         <div className={Styles.sidebarContent}>
           <h1 className={Styles.header}>Content Generator</h1>
-          <Search />
+          <Search searchFeeds={this.props.searchFeeds} />
           <FeedList feeds={this.props.feeds} removeFeed={this.props.removeFeed} />
           <AddFeed addFeed={this.props.addFeed} />
         </div>
@@ -30,7 +30,8 @@ Sidebar.defaultProps = {
 Sidebar.propTypes = {
   feeds: PropTypes.arrayOf(PropTypes.object),
   addFeed: PropTypes.func.isRequired,
-  removeFeed: PropTypes.func.isRequired
+  removeFeed: PropTypes.func.isRequired,
+  searchFeeds: PropTypes.func.isRequired
 }
 
 export default Sidebar

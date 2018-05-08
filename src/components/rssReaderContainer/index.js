@@ -1,8 +1,7 @@
 import {connect} from 'react-redux'
 import {RSSReader} from './children'
-import {addFeed, removeFeed} from '../../data/actionCreators'
-// import {fetchPosts} from '../../data/actionCreators/posts'
-// import {fetchComments} from '../../data/actionCreators/comments'
+import {addFeed, removeFeed, searchForFeed} from '../../data/actionCreators'
+import {debounce} from './helpers'
 
 /**
  * Returns props to use for the connected UserList
@@ -11,7 +10,9 @@ import {addFeed, removeFeed} from '../../data/actionCreators'
  */
 const mapStateToProps = (state) => {
   return {
-    feeds: state.feeds
+    feeds: !state.searchTerm ? state.feeds : state.feeds.filter((feed) => {
+      return feed.name.includes(state.searchTerm)
+    })
   }
 }
 
@@ -22,7 +23,8 @@ const mapStateToProps = (state) => {
 const mapDispatchToprops = (dispatch) => {
   return {
     addFeed: (name, url) => { dispatch(addFeed(name, url)) },
-    removeFeed: (name, url) => { dispatch(removeFeed(name, url)) }
+    removeFeed: (name, url) => { dispatch(removeFeed(name, url)) },
+    searchFeeds: debounce((name) => { dispatch(searchForFeed(name)) }, 500)
     // getPostsForUser: (id) => { dispatch(fetchPosts(id)) },
     // getCommentsForPost: (userId, postId) => { dispatch(fetchComments(userId, postId)) }
   }
