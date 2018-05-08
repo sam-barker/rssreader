@@ -10,7 +10,8 @@ class RSSReader extends Component {
         <Sidebar
           feeds={this.props.feeds}
           addFeed={this.props.addFeed}
-          removeFeed={this.props.removeFeed}/>
+          removeFeed={this.props.removeFeed}
+          searchFeeds={this.props.searchFeeds} />
         <Feed />
       </div>
     )
@@ -24,7 +25,8 @@ RSSReader.defaultProps = {
 RSSReader.propTypes = {
   feeds: PropTypes.arrayOf(PropTypes.object),
   addFeed: PropTypes.func.isRequired,
-  removeFeed: PropTypes.func.isRequired
+  removeFeed: PropTypes.func.isRequired,
+  searchFeeds: PropTypes.func.isRequired
 }
 
 export default RSSReader
