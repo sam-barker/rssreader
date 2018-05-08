@@ -10,7 +10,6 @@ export default (state = initialState, action) => {
         loading: true
       }
     case ActionTypes.REMOVE_FEED_SUCCESS:
-      console.log('remove feed success switch')
       return {
         ...state,
         feeds: state.feeds.map((feed) => {
@@ -31,6 +30,11 @@ export default (state = initialState, action) => {
         ...state,
         loading: false,
         error: 'Failed to add feed!'
+      }
+    case ActionTypes.SEARCH_FOR_FEED:
+      return {
+        ...state,
+        searchTerm: action.name
       }
     default:
       return state

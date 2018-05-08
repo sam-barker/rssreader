@@ -41,7 +41,6 @@ export function addFeed (name, url) {
 }
 
 export function removeFeedSuccess (feed) {
-  console.log('remove feed success called with', feed)
   return {
     type: ActionTypes.REMOVE_FEED_SUCCESS,
     feed
@@ -52,5 +51,12 @@ export function removeFeed (name, url) {
   return function (dispatch) {
     console.log('dispatching remove success', name, url)
     dispatch(removeFeedSuccess({name, url}))
+  }
+}
+
+export function searchForFeed (name) {
+  return {
+    type: ActionTypes.SEARCH_FOR_FEED,
+    name
   }
 }
