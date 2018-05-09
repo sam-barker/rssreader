@@ -1,0 +1,18 @@
+.postsContainer {
+  width: 70%
+}
+
+.posts {
+  display: flex;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: space-between;
+}
+
+.post {
+
+}

@@ -12,10 +12,12 @@ export default (state = initialState, action) => {
     case ActionTypes.REMOVE_FEED_SUCCESS:
       return {
         ...state,
-        feeds: state.feeds.map((feed) => {
+        feeds: state.feeds.filter((feed) => {
           if (feed.name !== action.feed.name ||
             feed.url !== action.feed.url) {
-            return feed
+            return true
+          } else {
+            return false
           }
         })
       }

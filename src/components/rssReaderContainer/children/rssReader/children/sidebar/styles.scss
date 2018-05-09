@@ -10,6 +10,7 @@ $searchTextColour: #9CA3A9;
 }
 
 .sidebar {
+  width: 20%;
   background-color: $backgroundColour;
   ::placeholder { @include placeholder }
   :-ms-input-placeholder { @include placeholder }

@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 import PropTypes from 'prop-types'
-import {Sidebar, Feed} from './children'
+import {Sidebar, Posts} from './children'
 import Styles from './styles.scss'
 
 class RSSReader extends Component {
@@ -12,18 +12,20 @@ class RSSReader extends Component {
           addFeed={this.props.addFeed}
           removeFeed={this.props.removeFeed}
           searchFeeds={this.props.searchFeeds} />
-        <Feed />
+        <Posts sortedFeeds={this.props.sortedFeeds} />
       </div>
     )
   }
 }
 
 RSSReader.defaultProps = {
-  feeds: []
+  feeds: [],
+  sortedFeeds: []
 }
 
 RSSReader.propTypes = {
   feeds: PropTypes.arrayOf(PropTypes.object),
+  sortedFeeds: PropTypes.arrayOf(PropTypes.object),
   addFeed: PropTypes.func.isRequired,
   removeFeed: PropTypes.func.isRequired,
   searchFeeds: PropTypes.func.isRequired
