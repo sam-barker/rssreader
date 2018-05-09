@@ -3,6 +3,21 @@ import Reqwest from '@spbarker/re-qwest'
 
 const API_LOCATION = 'https://api.rss2json.com/v1/api.json?rss_url='
 
+function fetchFeed (dispatch, name, url) {
+  dispatch(addFeedStart())
+  Reqwest({
+    method: 'GET',
+    url: `${API_LOCATION}${url}`
+  })
+    .then((response) => JSON.parse(response))
+    .then((json) => {
+      dispatch(addFeedSuccess({ ...json, name, url }))
+    })
+    .catch((error) => {
+      dispatch(addFeedFailure(error))
+    })
+}
+
 export function addFeedStart () {
   return {
     type: ActionTypes.ADD_FEED_START
@@ -25,18 +40,7 @@ export function addFeedFailure (error) {
 
 export function addFeed (name, url) {
   return function (dispatch) {
-    dispatch(addFeedStart())
-    Reqwest({
-      method: 'GET',
-      url: `${API_LOCATION}${url}`
-    })
-      .then((response) => JSON.parse(response))
-      .then((json) => {
-        dispatch(addFeedSuccess({ ...json, name, url }))
-      })
-      .catch((error) => {
-        dispatch(addFeedFailure(error))
-      })
+    fetchFeed(dispatch, name, url)
   }
 }
 
