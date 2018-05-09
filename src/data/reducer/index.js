@@ -13,7 +13,7 @@ export default (state = initialState, action) => {
       return {
         ...state,
         feeds: state.feeds.map((feed) => {
-          if (feed.name !== action.feed.name &&
+          if (feed.name !== action.feed.name ||
             feed.url !== action.feed.url) {
             return feed
           }

@@ -1,6 +1,7 @@
 .searchContainer {
   width: 100%;
   padding-bottom: 1em;
+  flex-grow: 0;
 }
 
 .searchIconContainer {
@@ -13,4 +14,12 @@
 .searchInputField {
   width: 85%;
   display: inline-block;
+}
+
+.header {
+  font-size: 1.5em;
+  color: white;
+  font-weight: 300;
+  padding-bottom: 1.5em;
+  text-align: center;
 }
