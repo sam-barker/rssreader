@@ -28,13 +28,6 @@ $searchTextColour: #9CA3A9;
   display: -webkit-flex;
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: space-around;
   flex-direction: column;
-}
-
-.header {
-  font-size: 1.5em;
-  color: white;
-  font-weight: 300;
-  padding-bottom: 1.5em;
 }

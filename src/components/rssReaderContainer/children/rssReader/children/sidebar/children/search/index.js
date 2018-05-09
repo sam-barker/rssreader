@@ -43,6 +43,7 @@ class Sidebar extends Component {
   render () {
     return (
       <div className={Styles.searchContainer}>
+        <h1 className={Styles.header}>Content Generator</h1>
         {this.renderSearchInput()}
         {this.renderSearchIcon()}
       </div>

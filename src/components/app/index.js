@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
 import Store from '../../data'
 import RSSReaderContainer from '../rssReaderContainer'
-import {addFeed} from '../../data/actionCreators'
+// import {addFeed} from '../../data/actionCreators'
 
 /**
  * Application class
@@ -9,9 +9,6 @@ import {addFeed} from '../../data/actionCreators'
 class App extends Component {
   componentWillMount () {
     this.unsubscribe = Store.subscribe(() => { })
-    Store.getState().feeds.forEach((feed) => {
-      Store.dispatch(addFeed(feed.name, feed.url))
-    })
   }
 
   componentWillUnmount () {
