@@ -61,15 +61,14 @@ class InputField extends Component {
 InputField.defaultProps = {
   type: 'text',
   placeholder: '',
-  value: '',
-  onChange: () => {}
+  value: ''
 }
 
 InputField.propTypes = {
   type: PropTypes.string,
   placeholder: PropTypes.string,
   value: PropTypes.string,
-  onChange: PropTypes.func
+  onChange: PropTypes.func.isRequired
 }
 
 export default InputField
