@@ -11,15 +11,26 @@
     "dev": "NODE_ENV=development webpack-dev-server --hot",
     "production": "NODE_ENV=production webpack-dev-server --hot",
     "test": "jest",
-    "test:watch": "jest --watch",
-    "test:coverage": "jest --coverage"
+    "coverage": "jest --coverage"
   },
   "jest": {
     "verbose": true,
     "collectCoverageFrom": [
-      "src/**/*.js"
+      "src/components/**/*.js",
+      "src/data/**/*.js"
     ],
-    "setupTestFrameworkScriptFile": "<rootDir>/testSetup.js"
+    "setupTestFrameworkScriptFile": "<rootDir>/testSetup.js",
+    "moduleNameMapper": {
+      "\\.(css|scss)$": "<rootDir>/__mocks__/styleMock.js"
+    },
+    "coverageThreshold": {
+      "global": {
+        "branches": 100,
+        "functions": 100,
+        "lines": 100,
+        "statements": 100
+      }
+    }
   },
   "dependencies": {
     "@spbarker/re-qwest": "^3.0.0",
