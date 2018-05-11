@@ -5,25 +5,13 @@ import Styles from './styles.scss'
 class Toggle extends Component {
   constructor (props) {
     super(props)
-    // this.state = {
-    //   toggled: this.props.toggled
-    // }
     this.clickCheckbox = this.clickCheckbox.bind(this)
     this.checkboxRef = this.checkboxRef.bind(this)
-    // this.onCheckboxClick = this.onCheckboxClick.bind(this)
-  }
-
-  get labelStyle () {
-    return this.props.toggled ? Styles.labelChecked : Styles.label
   }
 
   get circleStyle () {
     return this.props.toggled ? Styles.circleChecked : Styles.circle
   }
-
-  // onCheckboxClick () {
-  //   this.setState({toggled: !this.state.toggled})
-  // }
 
   clickCheckbox () {
     this.checkbox.click()

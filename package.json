@@ -11,15 +11,26 @@
     "dev": "NODE_ENV=development webpack-dev-server --hot",
     "production": "NODE_ENV=production webpack-dev-server --hot",
     "test": "jest",
-    "test:watch": "jest --watch",
-    "test:coverage": "jest --coverage"
+    "coverage": "jest --coverage"
   },
   "jest": {
     "verbose": true,
     "collectCoverageFrom": [
-      "src/**/*.js"
+      "src/components/**/*.js",
+      "src/data/**/*.js"
     ],
-    "setupTestFrameworkScriptFile": "<rootDir>/testSetup.js"
+    "setupTestFrameworkScriptFile": "<rootDir>/testSetup.js",
+    "moduleNameMapper": {
+      "\\.(css|scss)$": "<rootDir>/__mocks__/styleMock.js"
+    },
+    "coverageThreshold": {
+      "global": {
+        "branches": 100,
+        "functions": 100,
+        "lines": 100,
+        "statements": 100
+      }
+    }
   },
   "dependencies": {
     "@spbarker/re-qwest": "^3.0.0",
@@ -41,9 +52,11 @@
     "css-loader": "^0.28.11",
     "enzyme": "^3.3.0",
     "enzyme-adapter-react-16": "^1.1.1",
+    "fetch-mock": "^6.3.0",
     "html-webpack-plugin": "^3.2.0",
     "jest": "^22.4.3",
     "node-sass": "^4.9.0",
+    "redux-mock-store": "^1.5.1",
     "sass-loader": "^7.0.1",
     "standard": "^11.0.1",
     "style-loader": "^0.21.0",
