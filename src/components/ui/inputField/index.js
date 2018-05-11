@@ -39,6 +39,7 @@ class InputField extends Component {
         className={this.inputStyle}>
         <input
           ref={this.inputRef}
+          value={this.props.value}
           onChange={this.props.onChange}
           onFocus={this.onInputFocus}
           onBlur={this.onInputBlur}
