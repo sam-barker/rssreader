@@ -53,7 +53,6 @@ export function removeFeedSuccess (feed) {
 
 export function removeFeed (name, url) {
   return function (dispatch) {
-    console.log('dispatching remove success', name, url)
     dispatch(removeFeedSuccess({name, url}))
   }
 }
