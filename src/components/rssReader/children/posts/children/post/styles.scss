@@ -4,6 +4,7 @@ $backgroundColour: white;
 @mixin link {
   color: #5BB2F1;
   text-decoration: none;
+  margin-left: 10px;
 }
 
 .post {
@@ -13,12 +14,18 @@ $backgroundColour: white;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
-.name {
+.nameContainer {
   background-color: #586068;
   margin: 0;
-  padding: 15px;
+  padding: 15px 20px;
   font-weight: bold;
   font-size: 0.8125em;
+}
+
+.name {
+  display: inline-block;
+  width: 65%;
+  text-align: left;
 }
 
 .nameLink {
@@ -29,9 +36,14 @@ $backgroundColour: white;
 }
 
 .date {
+  display: inline-block;
+  position: relative;
   color: white;
-  font-size: 0.6em;
-  display: inline;
+  font-size: 0.7em;
+  font-weight: 200;
+  text-align: right;
+  width: 35%;
+  bottom: 1px;
 }
 
 .details {
@@ -65,4 +77,9 @@ $backgroundColour: white;
 
 .thumbnail {
   width: 100%;
+}
+
+.linkIcon {
+  position: relative;
+  top: 2px;
 }
