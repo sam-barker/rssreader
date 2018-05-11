@@ -18,6 +18,8 @@ class AddFeed extends Component {
     }
 
     this.onAddSubmit = this.onAddSubmit.bind(this)
+    this.onFeedNameChange = this.onInputChange.bind(this, 'feedName')
+    this.onUrlChange = this.onInputChange.bind(this, 'url')
   }
 
   onInputChange (prop, event) {
@@ -28,6 +30,7 @@ class AddFeed extends Component {
     if (!isValidUrl(this.state)) return displayAlert('Invalid URL!')
     if (!isValidName(this.state)) return displayAlert('Invalid name!')
     this.props.addFeed(this.state.feedName, this.state.url)
+    this.setState({feedName: '', url: ''})
   }
 
   render () {
@@ -37,16 +40,16 @@ class AddFeed extends Component {
         <div className={Styles.addFeedInputContainer}>
           <InputField
             value={this.state.feedName}
-            onChange={this.onInputChange.bind(this, 'feedName')}
+            onChange={this.onFeedNameChange}
             placeholder={'Type your feed name ...'} />
           <InputField
             value={this.state.url}
-            onChange={this.onInputChange.bind(this, 'url')}
+            onChange={this.onUrlChange}
             placeholder={'Copy your RSS url ...'} />
           <SubmitButton
             text={'Add feed'}
             onClick={this.onAddSubmit}
-            disabled={isSubmitEnabled(this.state)} />
+            disabled={!isSubmitEnabled(this.state)} />
         </div>
       </div>
     )

@@ -3,15 +3,11 @@
  global expect
  global it
 */
-
-import reducer from '../../../src/data/reducer'
 import Types from '../../../src/data/actionTypes'
 import {
   addFeedStart,
   addFeedSuccess,
   addFeedFailure,
-  addFeed,
-  removeFeed,
   removeFeedSuccess,
   searchForFeed
 } from '../../../src/data/actionCreators'
