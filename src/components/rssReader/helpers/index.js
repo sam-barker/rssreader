@@ -16,7 +16,8 @@ function debounce (func, wait) {
 }
 
 function filterFeedByname (name, feed) {
-  return feed.name.includes(name)
+  console.log('seeing if', feed.name, 'includes', name)
+  return feed.name.toLowerCase().includes(name.toLowerCase())
 }
 
 function getFeeds (state) {
