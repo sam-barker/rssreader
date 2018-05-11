@@ -1,6 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import Styles from './styles.scss'
+import {LinkIcon} from '../../../../../icons'
 
 const MONTH_NAMES = [
   'January', 'February', 'March',
@@ -20,7 +21,7 @@ function getDateString (date) {
   return `${month} ${day} ${year} | ${hours}:${mins}`
 }
 
-function renderThumbnail (thumbnail) {
+function renderThumbnail ({thumbnail}) {
   return !thumbnail ? null : (
     <div className={Styles.thumbnailContainer}>
       <img src={thumbnail} className={Styles.thumbnail} />
@@ -28,7 +29,7 @@ function renderThumbnail (thumbnail) {
   )
 }
 
-function renderDetails (title, description) {
+function renderDetails ({title, description}) {
   return (
     <div className={Styles.details}>
       <p className={Styles.title}>
@@ -41,25 +42,28 @@ function renderDetails (title, description) {
   )
 }
 
-function Post (post) {
-  const {
-    name,
-    title,
-    thumbnail,
-    description,
-    link,
-    pubDate
-  } = post
+function renderName ({link, name, pubDate}) {
   return (
-    <div key={title} className={Styles.post}>
-      <p className={Styles.name}>
+    <div className={Styles.nameContainer}>
+      <div className={Styles.name}>
+        <LinkIcon className={Styles.linkIcon} />
         <a className={Styles.nameLink} href={link}>{name}</a>
-      </p>
-      <p className={Styles.date}>
-        {getDateString(pubDate)}
-      </p>
-      {renderThumbnail(thumbnail)}
-      {renderDetails(title, description)}
+      </div>
+      <div className={Styles.date}>
+        <p>
+          {getDateString(pubDate)}
+        </p>
+      </div>
+    </div>
+  )
+}
+
+function Post (post) {
+  return (
+    <div key={post.title} className={Styles.post}>
+      {renderName(post)}
+      {renderThumbnail(post)}
+      {renderDetails(post)}
     </div>
   )
 }
