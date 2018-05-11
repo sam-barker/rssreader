@@ -1,0 +1,16 @@
+.postsContainer {
+  width: 75%;
+  overflow: scroll;
+  margin-top: 1.75em;
+}
+
+.posts {
+  display: flex;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+}

@@ -24,14 +24,13 @@ class SubmitButton extends Component {
 SubmitButton.defaultProps = {
   text: 'Submit',
   size: 'full',
-  onClick: () => {},
   disabled: false
 }
 
 SubmitButton.propTypes = {
   text: PropTypes.string,
   size: PropTypes.oneOf(['small', 'medium', 'large', 'xlarge', 'full']),
-  onClick: PropTypes.func,
+  onClick: PropTypes.func.isRequired,
   disabled: PropTypes.bool
 }
 

@@ -39,6 +39,7 @@ class InputField extends Component {
         className={this.inputStyle}>
         <input
           ref={this.inputRef}
+          value={this.props.value}
           onChange={this.props.onChange}
           onFocus={this.onInputFocus}
           onBlur={this.onInputBlur}
@@ -61,15 +62,14 @@ class InputField extends Component {
 InputField.defaultProps = {
   type: 'text',
   placeholder: '',
-  value: '',
-  onChange: () => {}
+  value: ''
 }
 
 InputField.propTypes = {
   type: PropTypes.string,
   placeholder: PropTypes.string,
   value: PropTypes.string,
-  onChange: PropTypes.func
+  onChange: PropTypes.func.isRequired
 }
 
 export default InputField
