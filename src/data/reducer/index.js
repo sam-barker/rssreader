@@ -31,12 +31,17 @@ export default (state = initialState, action = {type: 'None'}) => {
       return {
         ...state,
         loading: false,
-        error: 'Failed to add feed!'
+        error: `Failed to add feed at ${action.url}. Please double check the URL.`
       }
     case ActionTypes.SEARCH_FOR_FEED:
       return {
         ...state,
         searchTerm: action.name
+      }
+    case ActionTypes.DISMISS_ERROR:
+      return {
+        ...state,
+        error: null
       }
     default:
       return state

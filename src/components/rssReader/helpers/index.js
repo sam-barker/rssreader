@@ -1,4 +1,9 @@
-import {addFeed, removeFeed, searchForFeed} from '../../../data/actionCreators'
+import {
+  addFeed,
+  removeFeed,
+  searchForFeed,
+  dismissError
+} from '../../../data/actionCreators'
 
 function debounce (func, wait) {
   let timeout
@@ -54,9 +59,11 @@ function sortFeeds (feeds) {
 export function mapStateToProps (state) {
   const feeds = getFeeds(state)
   const sortedFeeds = sortFeeds(feeds)
+  const error = state.error
   return {
     feeds,
-    sortedFeeds
+    sortedFeeds,
+    error
   }
 }
 
@@ -64,6 +71,7 @@ export function mapDispatchToProps (dispatch) {
   return {
     addFeed: (name, url) => { dispatch(addFeed(name, url)) },
     removeFeed: (name, url) => { dispatch(removeFeed(name, url)) },
-    searchFeeds: debounce((name) => { dispatch(searchForFeed(name)) }, 500)
+    searchFeeds: debounce((name) => { dispatch(searchForFeed(name)) }, 500),
+    dismissError: () => { dispatch(dismissError()) }
   }
 }
