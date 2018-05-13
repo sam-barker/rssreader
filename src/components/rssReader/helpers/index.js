@@ -5,21 +5,7 @@ import {
   dismissError,
   displayError
 } from '../../../data/actionCreators'
-
-function debounce (func, wait) {
-  let timeout
-  return function () {
-    const context = this
-    const args = arguments
-    const later = function () {
-      timeout = null
-    }
-    const callNow = !timeout
-    clearTimeout(timeout)
-    timeout = setTimeout(later, wait)
-    if (callNow) func.apply(context, args)
-  }
-}
+import debounce from 'debounce'
 
 function filterFeedByname (name, feed) {
   return feed.name.toLowerCase().includes(name.toLowerCase())

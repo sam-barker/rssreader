@@ -2,6 +2,7 @@
    global expect
    global it
    global describe
+   global jest
  */
 import React from 'react'
 import {mount} from 'enzyme'
@@ -36,5 +37,22 @@ describe('<Post /> tests', () => {
     }
     const enzymeWrapper = mount(<Post {...props} />)
     expect(enzymeWrapper.find('img').length).toBe(0)
+  })
+
+  it('will navigate to the posts location', () => {
+    global.window = {}
+    global.window.open = jest.fn()
+    const props = {
+      name: 'Name',
+      title: 'Title',
+      url: 'https://example.com',
+      link: 'https://another-example.com',
+      description: 'this is an example for testing',
+      pubDate: '2018-01-01 10:10',
+      guid: 'https://google.com'
+    }
+    const enzymeWrapper = mount(<Post {...props} />)
+    enzymeWrapper.simulate('click')
+    expect(global.window.open).toHaveBeenCalled()
   })
 })

@@ -48,7 +48,8 @@ class AddFeed extends Component {
           <InputField
             value={this.state.feedName}
             onChange={this.onFeedNameChange}
-            placeholder={'Type your feed name ...'} />
+            placeholder={'Type your feed name ...'}
+            maxLength={15} />
           <InputField
             value={this.state.url}
             onChange={this.onUrlChange}

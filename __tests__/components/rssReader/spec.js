@@ -15,7 +15,8 @@ function setup () {
     addFeed: jest.fn(),
     removeFeed: jest.fn(),
     searchFeeds: jest.fn(),
-    displayError: jest.fn()
+    displayError: jest.fn(),
+    dismissError: jest.fn()
   }
 
   const enzymeWrapper = mount(<RSSReader {...props} />)
@@ -27,8 +28,16 @@ function setup () {
 }
 
 describe('<RSSReader /> tests', () => {
+  const {enzymeWrapper} = setup()
+
   it('renders correctly', () => {
-    const {enzymeWrapper} = setup()
     expect(enzymeWrapper).toBeDefined()
+  })
+
+  it('renders an error modal when an error is present', () => {
+    const newProps = {error: 'Example error'}
+    enzymeWrapper.setProps(newProps)
+    enzymeWrapper.update()
+    enzymeWrapper.find('Modal').text().includes(newProps.error)
   })
 })

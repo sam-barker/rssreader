@@ -1,21 +1,18 @@
 import ActionTypes from '../actionTypes'
 import Reqwest from '@spbarker/re-qwest'
+import {toJson} from './helpers'
 
 const API_LOCATION = 'https://api.rss2json.com/v1/api.json?rss_url='
 
 function fetchFeed (dispatch, name, url) {
+  const onSuccess = (json) => { dispatch(addFeedSuccess({ ...json, name, url })) }
+  const onCatch = () => dispatch(addFeedFailure(url))
   dispatch(addFeedStart())
   Reqwest({
     method: 'GET',
     url: `${API_LOCATION}${url}`
   })
-    .then((response) => JSON.parse(response))
-    .then((json) => {
-      dispatch(addFeedSuccess({ ...json, name, url }))
-    })
-    .catch(() => {
-      dispatch(addFeedFailure(url))
-    })
+    .then(toJson).then(onSuccess).catch(onCatch)
 }
 
 export function addFeedStart () {
@@ -33,13 +30,13 @@ export function addFeedSuccess (feed) {
 
 export function addFeedFailure (url) {
   return function (dispatch) {
-    displayError(`Failed to add feed at ${url}. Please double check the URL.`)
+    dispatch(displayError(`Failed to add feed at ${url}. Please double check the URL.`))
   }
 }
 
 export function addFeed (name, url) {
   return function (dispatch) {
-    fetchFeed(dispatch, name, url)
+    dispatch(fetchFeed(dispatch, name, url))
   }
 }
 

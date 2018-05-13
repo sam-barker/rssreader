@@ -2,31 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import Styles from './styles.scss'
 import {LinkIcon} from '../../../../../icons'
-
-const MONTH_NAMES = [
-  'January', 'February', 'March',
-  'April', 'May', 'June', 'July',
-  'August', 'September', 'October',
-  'November', 'December'
-]
-
-function addZero (i) {
-  if (i < 10) {
-    i = '0' + i
-  }
-  return i
-}
-
-function getDateString (date) {
-  const newDate = new Date(date)
-  const day = newDate.getDate()
-  const month = MONTH_NAMES[newDate.getMonth()]
-  const year = newDate.getFullYear()
-  const hours = addZero(newDate.getHours())
-  const mins = addZero(newDate.getMinutes())
-
-  return `${month} ${day} ${year} | ${hours}:${mins}`
-}
+import {getDateString} from './helpers'
 
 function renderThumbnail ({thumbnail}) {
   return !thumbnail ? null : (
@@ -69,15 +45,15 @@ function onPostClick ({guid}) {
   window.open(guid, '_blank')
 }
 
-function Post (post) {
+function Post (props) {
   return (
     <div
-      key={post.title}
+      key={props.title}
       className={Styles.post}
-      onClick={onPostClick.bind(this, post)}>
-      {renderName(post)}
-      {renderThumbnail(post)}
-      {renderDetails(post)}
+      onClick={onPostClick.bind(this, props)}>
+      {renderName(props)}
+      {renderThumbnail(props)}
+      {renderDetails(props)}
     </div>
   )
 }
