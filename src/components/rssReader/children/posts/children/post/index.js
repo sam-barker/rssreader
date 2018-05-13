@@ -65,9 +65,16 @@ function renderName ({link, name, pubDate}) {
   )
 }
 
+function onPostClick ({guid}) {
+  window.open(guid, '_blank')
+}
+
 function Post (post) {
   return (
-    <div key={post.title} className={Styles.post}>
+    <div
+      key={post.title}
+      className={Styles.post}
+      onClick={onPostClick.bind(this, post)}>
       {renderName(post)}
       {renderThumbnail(post)}
       {renderDetails(post)}
@@ -81,7 +88,8 @@ Post.propTypes = {
   url: PropTypes.string.isRequired,
   link: PropTypes.string.isRequired,
   description: PropTypes.string.isRequired,
-  pubDate: PropTypes.string.isRequired
+  pubDate: PropTypes.string.isRequired,
+  guid: PropTypes.string.isRequired
 }
 
 export default Post
