@@ -1,7 +1,9 @@
 import ActionTypes from '../actionTypes'
 import initialState from '../initialState'
 
-export default (state = initialState, action = {type: 'None'}) => {
+const defaultAction = {type: 'None'}
+
+export default (state = initialState, action = defaultAction) => {
   switch (action.type) {
     case ActionTypes.REMOVE_FEED_START:
     case ActionTypes.ADD_FEED_START:
