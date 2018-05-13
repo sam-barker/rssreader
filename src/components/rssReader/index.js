@@ -30,7 +30,7 @@ export class RSSReader extends Component {
         onOkay={this.props.dismissError} />
     )
   }
-
+  
   render () {
     return (
       <div className={Styles.rssReaderContainer}>

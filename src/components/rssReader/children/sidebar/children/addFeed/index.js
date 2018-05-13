@@ -64,8 +64,12 @@ class AddFeed extends Component {
 }
 
 AddFeed.propTypes = {
+<<<<<<< HEAD
   addFeed: PropTypes.func.isRequired,
   displayError: PropTypes.func.isRequired
+=======
+  addFeed: PropTypes.func.isRequired
+>>>>>>> master
 }
 
 export default AddFeed

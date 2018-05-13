@@ -1,55 +1,45 @@
 import React, {Component} from 'react'
 import PropTypes from 'prop-types'
-import {RemoveIcon, BulletIcon} from '../../../../../../../icons'
+import {RemoveIcon} from '../../../../../../../icons'
+import {Toggle} from '../../../../../../../ui'
 import Styles from './styles.scss'
 
 class Feed extends Component {
   constructor (props) {
     super(props)
     this.state = {
-      removeHover: false
+      toggled: false
     }
 
-    this.bindHandlers()
+    this.onToggle = this.onToggle.bind(this)
   }
 
-  bindHandlers () {
-    this.onRemove = this.onRemove.bind(this)
-    this.onMouseEnterRemove = this.setStateValue.bind(this, 'removeHover', true)
-    this.onMouseLeaveRemove = this.setStateValue.bind(this, 'removeHover', false)
-  }
-
-  setStateValue (key, val) {
-    this.setState({[key]: val})
-  }
-
-  onRemove (e) {
-    e.stopPropagation()
-    this.props.removeFeed(this.props.name, this.props.url)
+  onToggle () {
+    this.setState({toggled: !this.state.toggled})
   }
 
   renderRemoveIcon () {
-    const colour = this.state.removeHover ? '#d65c5c' : '#DEAB95'
     return (
       <div
-        onClick={this.onRemove}
-        onMouseEnter={this.onMouseEnterRemove}
-        onMouseLeave={this.onMouseLeaveRemove}
+        onClick={(e) => {
+          e.stopPropagation()
+          this.props.removeFeed(this.props.name, this.props.url)
+        }}
         className={Styles.removeIconContainer}>
-        <RemoveIcon colour={colour} />
+        <RemoveIcon />
       </div>
     )
   }
 
   render () {
     const {name} = this.props
+    const {toggled} = this.state
     return (
-      <li
-        className={Styles.feed}>
-        <BulletIcon />
+      <div className={Styles.feed}>
+        <Toggle toggled={toggled} onToggle={this.onToggle} />
         <p className={Styles.feedName}>{name}</p>
         {this.renderRemoveIcon()}
-      </li>
+      </div>
     )
   }
 }

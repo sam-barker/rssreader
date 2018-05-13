@@ -30,8 +30,12 @@ Sidebar.propTypes = {
   feeds: PropTypes.arrayOf(PropTypes.object),
   addFeed: PropTypes.func.isRequired,
   removeFeed: PropTypes.func.isRequired,
+<<<<<<< HEAD
   searchFeeds: PropTypes.func.isRequired,
   displayError: PropTypes.func.isRequired
+=======
+  searchFeeds: PropTypes.func.isRequired
+>>>>>>> master
 }
 
 export default Sidebar
