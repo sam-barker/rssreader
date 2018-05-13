@@ -17,7 +17,8 @@ describe('<Posts /> tests', () => {
           url: 'https://example.com',
           link: 'https://another-example.com',
           description: 'this is an example for testing',
-          pubDate: '2018-01-01 10:10'
+          pubDate: '2018-01-01 10:10',
+          guid: 'https://google.com'
         },
         {
           name: 'Name2',
@@ -25,7 +26,8 @@ describe('<Posts /> tests', () => {
           url: 'https://example.com',
           link: 'https://another-example.com',
           description: 'this is an example for testing 2',
-          pubDate: '2018-01-01 10:10'
+          pubDate: '2018-01-01 10:10',
+          guid: 'https://google.com'
         }
       ]
     }

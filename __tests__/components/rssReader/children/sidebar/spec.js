@@ -31,7 +31,8 @@ describe('<Sidebar /> tests', () => {
       ],
       addFeed: jest.fn(),
       removeFeed: jest.fn(),
-      searchFeeds: jest.fn()
+      searchFeeds: jest.fn(),
+      displayError: jest.fn()
     }
     const enzymeWrapper = mount(<Sidebar {...props} />)
     expect(enzymeWrapper).toBeDefined()
