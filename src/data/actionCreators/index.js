@@ -13,8 +13,8 @@ function fetchFeed (dispatch, name, url) {
     .then((json) => {
       dispatch(addFeedSuccess({ ...json, name, url }))
     })
-    .catch((error) => {
-      dispatch(addFeedFailure(error))
+    .catch(() => {
+      dispatch(addFeedFailure(url))
     })
 }
 
@@ -31,10 +31,10 @@ export function addFeedSuccess (feed) {
   }
 }
 
-export function addFeedFailure (error) {
+export function addFeedFailure (url) {
   return {
     type: ActionTypes.ADD_FEED_FAILURE,
-    error
+    url
   }
 }
 
@@ -61,5 +61,11 @@ export function searchForFeed (name) {
   return {
     type: ActionTypes.SEARCH_FOR_FEED,
     name
+  }
+}
+
+export function dismissError () {
+  return {
+    type: ActionTypes.DISMISS_ERROR
   }
 }
