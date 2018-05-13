@@ -17,20 +17,6 @@ describe('Reducer tests', () => {
     expect(reducer()).toEqual(initialState)
   })
 
-  it('should handle add/remove feed start', () => {
-    expectReducer(
-      [],
-      {type: ActionTypes.ADD_FEED_START},
-      {loading: true}
-    )
-
-    expectReducer(
-      [],
-      {type: ActionTypes.REMOVE_FEED_START},
-      {loading: true}
-    )
-  })
-
   it('should handle removing a feed success', () => {
     const state = {
       feeds: [
@@ -69,8 +55,7 @@ describe('Reducer tests', () => {
     }
     const expectedState = {
       ...state,
-      feeds: state.feeds.concat(feed),
-      loading: false
+      feeds: state.feeds.concat(feed)
     }
 
     expectReducer(state, action, expectedState)

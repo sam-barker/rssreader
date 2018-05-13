@@ -1,6 +1,10 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
+/**
+ * Search icon
+ * @param {object} props - Component props
+ */
 function SearchIcon (props) {
   return (
     <svg

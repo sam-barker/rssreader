@@ -8,17 +8,13 @@
 
 import Types from '../../../../src/data/actionTypes'
 import fetchMock from 'fetch-mock'
-import {addFeed, addFeedStart, addFeedSuccess, addFeedFailure} from '../../../../src/data/actionCreators/add'
+import {addFeed, addFeedSuccess, addFeedFailure} from '../../../../src/data/actionCreators/add'
 import {displayError} from '../../../../src/data/actionCreators/error'
 
 describe('Action Creator tests - Add', () => {
   afterEach(() => {
     fetchMock.reset()
     fetchMock.restore()
-  })
-
-  it('creates an addFeedStart action', () => {
-    expect(addFeedStart()).toEqual({type: Types.ADD_FEED_START})
   })
 
   it('creates an addFeedSuccess action', () => {

@@ -1,6 +1,10 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
+/**
+ * Remove icon
+ * @param {object} props - Component props
+ */
 function RemoveIcon (props) {
   return (
     <svg

@@ -1,6 +1,10 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
+/**
+ * Bullet point icon
+ * @param {object} props - Component props
+ */
 function BulletIcon (props) {
   return (
     <svg
