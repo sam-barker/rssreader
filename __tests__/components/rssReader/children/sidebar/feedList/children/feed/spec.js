@@ -26,4 +26,9 @@ describe('<Feed /> tests', () => {
     remove.simulate('click')
     expect(props.removeFeed).toHaveBeenCalled()
   })
+
+  it('can set a state value', () => {
+    enzymeWrapper.instance().setStateValue('removeHover', true)
+    expect(enzymeWrapper.state().removeHover).toEqual(true)
+  })
 })

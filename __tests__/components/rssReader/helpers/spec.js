@@ -4,8 +4,10 @@
    global describe
    global jest
  */
-
-import {mapStateToProps, mapDispatchToProps} from '../../../../src/components/rssReader/helpers'
+import {
+  mapStateToProps,
+  mapDispatchToProps
+} from '../../../../src/components/rssReader/helpers'
 
 describe('RSSReader - Helpers', () => {
   describe('mapStateToProps', () => {
@@ -105,14 +107,18 @@ describe('RSSReader - Helpers', () => {
       expect(props.addFeed).toBeDefined()
       expect(props.removeFeed).toBeDefined()
       expect(props.searchFeeds).toBeDefined()
+      expect(props.dismissError).toBeDefined()
+      expect(props.displayError).toBeDefined()
     })
 
     it('calls dispatch on each prop function', () => {
       props.addFeed('name', 'url')
       props.removeFeed('name', 'url')
       props.searchFeeds('name')
-      jest.runAllTimers()
-      expect(dispatch).toHaveBeenCalledTimes(3)
+      // jest.runAllTimers()
+      props.dismissError()
+      props.displayError('Test')
+      expect(dispatch).toHaveBeenCalledTimes(5)
     })
   })
 })
