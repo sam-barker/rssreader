@@ -45,7 +45,7 @@ class InputField extends Component {
           onBlur={this.onInputBlur}
           className={Styles.inputContent}
           type={this.props.type}
-          maxLength={this.props.maxlength}
+          maxLength={this.props.maxLength}
           placeholder={this.props.placeholder} />
       </div>
     )
@@ -64,7 +64,7 @@ InputField.defaultProps = {
   type: 'text',
   placeholder: '',
   value: '',
-  maxLength: 15
+  maxLength: 200
 }
 
 InputField.propTypes = {
