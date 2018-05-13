@@ -7,11 +7,11 @@ $lineHeight: 25px;
   padding-bottom: 10px;
   height: $lineHeight;
   text-align: left;
-  cursor: pointer;
-
-  &:hover > p {
-    color: #9CA3A9;
-  }
+  list-style-type: none;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
 }
 
 .feedName {
@@ -20,9 +20,11 @@ $lineHeight: 25px;
   line-height: $lineHeight;
   font-size: 0.8125em;
   margin-left: 1em;
+  width: 100%;
 }
 
 .removeIconContainer {
   float: right;
   padding-top: 3px;
+  cursor: pointer;
 }

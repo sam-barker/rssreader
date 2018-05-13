@@ -76,8 +76,8 @@ describe('Reducer tests', () => {
     expectReducer(state, action, expectedState)
   })
 
-  it('should handle adding a feed unsuccessfully', () => {
-    const action = {type: ActionTypes.ADD_FEED_FAILURE}
+  it('should handle displaying errors', () => {
+    const action = {type: ActionTypes.DISPLAY_ERROR, text: 'Error example'}
     const state = {
       feeds: [
         {name: 'test1', url: 'https://e.com'},
@@ -87,8 +87,7 @@ describe('Reducer tests', () => {
     }
     const expectedState = {
       ...state,
-      error: 'Failed to add feed!',
-      loading: false
+      error: action.text
     }
 
     expectReducer(state, action, expectedState)
@@ -106,6 +105,24 @@ describe('Reducer tests', () => {
     const expectedState = {
       ...state,
       searchTerm: action.name
+    }
+
+    expectReducer(state, action, expectedState)
+  })
+
+  it('should handle dismissing errors', () => {
+    const action = {type: ActionTypes.DISMISS_ERROR}
+    const state = {
+      feeds: [
+        {name: 'test1', url: 'https://e.com'},
+        {name: 'test2', url: 'https://f.com'},
+        {name: 'test3', url: 'https://g.com'}
+      ],
+      error: 'Example'
+    }
+    const expectedState = {
+      ...state,
+      error: null
     }
 
     expectReducer(state, action, expectedState)

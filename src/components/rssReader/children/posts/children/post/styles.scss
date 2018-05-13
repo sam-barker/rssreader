@@ -1,5 +1,6 @@
 $lineHeight: 1.2em;
 $backgroundColour: white;
+$postHoverTransition: opacity 0.5s ease-in-out;
 
 @mixin link {
   color: #5BB2F1;
@@ -12,6 +13,16 @@ $backgroundColour: white;
   background-color: $backgroundColour;
   margin: 5px;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  opacity: 1;
+  cursor: pointer;
+  &:hover {
+    opacity: 0.5;
+    -webkit-transition: $postHoverTransition;
+    -moz-transition: $postHoverTransition;
+    -o-transition: $postHoverTransition;
+    -ms-transition: $postHoverTransition;
+    transition: $postHoverTransition;
+  }
 }
 
 .nameContainer {

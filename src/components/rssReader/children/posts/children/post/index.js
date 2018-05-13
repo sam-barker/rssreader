@@ -10,23 +10,28 @@ const MONTH_NAMES = [
   'November', 'December'
 ]
 
-const DEFAULT_THUMBNAIL = 'http://leeford.in/wp-content/uploads/2017/09/image-not-found.jpg'
+function addZero (i) {
+  if (i < 10) {
+    i = '0' + i
+  }
+  return i
+}
 
 function getDateString (date) {
   const newDate = new Date(date)
   const day = newDate.getDate()
   const month = MONTH_NAMES[newDate.getMonth()]
   const year = newDate.getFullYear()
-  const hours = newDate.getHours()
-  const mins = newDate.getMinutes()
+  const hours = addZero(newDate.getHours())
+  const mins = addZero(newDate.getMinutes())
 
   return `${month} ${day} ${year} | ${hours}:${mins}`
 }
 
 function renderThumbnail ({thumbnail}) {
-  return (
+  return !thumbnail ? null : (
     <div className={Styles.thumbnailContainer}>
-      <img src={thumbnail || DEFAULT_THUMBNAIL} className={Styles.thumbnail} />
+      <img src={thumbnail} className={Styles.thumbnail} />
     </div>
   )
 }
@@ -60,9 +65,16 @@ function renderName ({link, name, pubDate}) {
   )
 }
 
+function onPostClick ({guid}) {
+  window.open(guid, '_blank')
+}
+
 function Post (post) {
   return (
-    <div key={post.title} className={Styles.post}>
+    <div
+      key={post.title}
+      className={Styles.post}
+      onClick={onPostClick.bind(this, post)}>
       {renderName(post)}
       {renderThumbnail(post)}
       {renderDetails(post)}
@@ -76,7 +88,8 @@ Post.propTypes = {
   url: PropTypes.string.isRequired,
   link: PropTypes.string.isRequired,
   description: PropTypes.string.isRequired,
-  pubDate: PropTypes.string.isRequired
+  pubDate: PropTypes.string.isRequired,
+  guid: PropTypes.string.isRequired
 }
 
 export default Post

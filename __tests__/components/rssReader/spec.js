@@ -14,7 +14,8 @@ function setup () {
     sortedFeeds: [],
     addFeed: jest.fn(),
     removeFeed: jest.fn(),
-    searchFeeds: jest.fn()
+    searchFeeds: jest.fn(),
+    displayError: jest.fn()
   }
 
   const enzymeWrapper = mount(<RSSReader {...props} />)

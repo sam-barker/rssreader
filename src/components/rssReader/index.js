@@ -2,6 +2,7 @@ import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import PropTypes from 'prop-types'
 import {Sidebar, Posts} from './children'
+import {Modal} from '../ui'
 import Styles from './styles.scss'
 import {
   mapStateToProps,
@@ -22,6 +23,14 @@ export class RSSReader extends Component {
     searchFeeds: PropTypes.func.isRequired
   }
 
+  renderError () {
+    return !this.props.error ? null : (
+      <Modal
+        text={this.props.error}
+        onOkay={this.props.dismissError} />
+    )
+  }
+  
   render () {
     return (
       <div className={Styles.rssReaderContainer}>
@@ -29,8 +38,10 @@ export class RSSReader extends Component {
           feeds={this.props.feeds}
           addFeed={this.props.addFeed}
           removeFeed={this.props.removeFeed}
-          searchFeeds={this.props.searchFeeds} />
+          searchFeeds={this.props.searchFeeds}
+          displayError={this.props.displayError} />
         <Posts sortedFeeds={this.props.sortedFeeds} />
+        {this.renderError()}
       </div>
     )
   }

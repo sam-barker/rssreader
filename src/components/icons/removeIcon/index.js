@@ -13,7 +13,7 @@ function RemoveIcon (props) {
         cx={'25'}
         cy={'25'}
         r={'25'}
-        fill={'#DEAB95'} />
+        fill={props.colour} />
       <path
         fill={'none'}
         stroke={'#fff'}
@@ -28,13 +28,15 @@ function RemoveIcon (props) {
 RemoveIcon.defaultProps = {
   width: 20,
   height: 20,
-  className: ''
+  className: '',
+  colour: '#DEAB95'
 }
 
 RemoveIcon.propTypes = {
   width: PropTypes.number,
   height: PropTypes.number,
-  className: PropTypes.string
+  className: PropTypes.string,
+  colour: PropTypes.string
 }
 
 export default RemoveIcon

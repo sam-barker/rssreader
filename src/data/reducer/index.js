@@ -1,7 +1,9 @@
 import ActionTypes from '../actionTypes'
 import initialState from '../initialState'
 
-export default (state = initialState, action = {type: 'None'}) => {
+const defaultAction = {type: 'None'}
+
+export default (state = initialState, action = defaultAction) => {
   switch (action.type) {
     case ActionTypes.REMOVE_FEED_START:
     case ActionTypes.ADD_FEED_START:
@@ -27,16 +29,20 @@ export default (state = initialState, action = {type: 'None'}) => {
         loading: false,
         feeds: state.feeds.concat(action.feed)
       }
-    case ActionTypes.ADD_FEED_FAILURE:
-      return {
-        ...state,
-        loading: false,
-        error: 'Failed to add feed!'
-      }
     case ActionTypes.SEARCH_FOR_FEED:
       return {
         ...state,
         searchTerm: action.name
+      }
+    case ActionTypes.DISMISS_ERROR:
+      return {
+        ...state,
+        error: null
+      }
+    case ActionTypes.DISPLAY_ERROR:
+      return {
+        ...state,
+        error: action.text
       }
     default:
       return state
