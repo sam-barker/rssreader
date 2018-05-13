@@ -10,6 +10,8 @@ const MONTH_NAMES = [
   'November', 'December'
 ]
 
+const DEFAULT_THUMBNAIL = 'http://leeford.in/wp-content/uploads/2017/09/image-not-found.jpg'
+
 function getDateString (date) {
   const newDate = new Date(date)
   const day = newDate.getDate()
@@ -22,9 +24,9 @@ function getDateString (date) {
 }
 
 function renderThumbnail ({thumbnail}) {
-  return !thumbnail ? null : (
+  return (
     <div className={Styles.thumbnailContainer}>
-      <img src={thumbnail} className={Styles.thumbnail} />
+      <img src={thumbnail || DEFAULT_THUMBNAIL} className={Styles.thumbnail} />
     </div>
   )
 }
