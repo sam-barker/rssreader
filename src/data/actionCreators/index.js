@@ -32,9 +32,8 @@ export function addFeedSuccess (feed) {
 }
 
 export function addFeedFailure (url) {
-  return {
-    type: ActionTypes.ADD_FEED_FAILURE,
-    url
+  return function (dispatch) {
+    displayError(`Failed to add feed at ${url}. Please double check the URL.`)
   }
 }
 
@@ -67,5 +66,12 @@ export function searchForFeed (name) {
 export function dismissError () {
   return {
     type: ActionTypes.DISMISS_ERROR
+  }
+}
+
+export function displayError (text) {
+  return {
+    type: ActionTypes.DISPLAY_ERROR,
+    text
   }
 }

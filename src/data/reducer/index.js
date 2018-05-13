@@ -27,12 +27,6 @@ export default (state = initialState, action = {type: 'None'}) => {
         loading: false,
         feeds: state.feeds.concat(action.feed)
       }
-    case ActionTypes.ADD_FEED_FAILURE:
-      return {
-        ...state,
-        loading: false,
-        error: `Failed to add feed at ${action.url}. Please double check the URL.`
-      }
     case ActionTypes.SEARCH_FOR_FEED:
       return {
         ...state,
@@ -41,7 +35,13 @@ export default (state = initialState, action = {type: 'None'}) => {
     case ActionTypes.DISMISS_ERROR:
       return {
         ...state,
+        loading: false,
         error: null
+      }
+    case ActionTypes.DISPLAY_ERROR:
+      return {
+        ...state,
+        error: action.text
       }
     default:
       return state
