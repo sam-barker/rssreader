@@ -6,17 +6,10 @@
 */
 import Types from '../../../src/data/actionTypes'
 import fetchMock from 'fetch-mock'
-import {
-  addFeed,
-  addFeedStart,
-  addFeedSuccess,
-  addFeedFailure,
-  removeFeedSuccess,
-  searchForFeed,
-  displayError,
-  dismissError,
-  removeFeed
-} from '../../../src/data/actionCreators'
+import {addFeed, addFeedStart, addFeedSuccess, addFeedFailure} from '../../../src/data/actionCreators/add'
+import {removeFeedSuccess, removeFeed} from '../../../src/data/actionCreators/remove'
+import {searchForFeed} from '../../../src/data/actionCreators/search'
+import {dismissError, displayError} from '../../../src/data/actionCreators/error'
 
 describe('Action Creator tests', () => {
   afterEach(() => {

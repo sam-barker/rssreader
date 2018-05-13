@@ -1,11 +1,8 @@
-import {
-  addFeed,
-  removeFeed,
-  searchForFeed,
-  dismissError,
-  displayError
-} from '../../../data/actionCreators'
 import debounce from 'debounce'
+import {addFeed} from '../../../data/actionCreators/add'
+import {removeFeed} from '../../../data/actionCreators/remove'
+import {searchForFeed} from '../../../data/actionCreators/search'
+import {dismissError, displayError} from '../../../data/actionCreators/error'
 
 function filterFeedByname (name, feed) {
   return feed.name.toLowerCase().includes(name.toLowerCase())
