@@ -1,0 +1,25 @@
+.modal {
+  // Renders on top of everything
+  z-index: 9999;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.6)
+}
+
+.contentContainer {
+  margin-top: 25%;
+}
+
+.content {
+  max-width: 400px;
+  margin: 0 auto;
+  overflow: hidden;
+  text-align: center;
+  position: relative;
+  border-radius: 5px;
+  background-color: white;
+  padding: 2em;
+}

@@ -7,9 +7,10 @@ import Types from '../../../src/data/actionTypes'
 import {
   addFeedStart,
   addFeedSuccess,
-  addFeedFailure,
   removeFeedSuccess,
-  searchForFeed
+  searchForFeed,
+  displayError,
+  dismissError
 } from '../../../src/data/actionCreators'
 
 describe('Action Creator tests', () => {
@@ -25,11 +26,17 @@ describe('Action Creator tests', () => {
     })
   })
 
-  it('creates an addFeedFailure action', () => {
-    const error = 'My error'
-    expect(addFeedFailure(error)).toEqual({
-      type: Types.ADD_FEED_FAILURE,
-      error
+  it('creates a display error action', () => {
+    const text = 'My error'
+    expect(displayError(text)).toEqual({
+      type: Types.DISPLAY_ERROR,
+      text
+    })
+  })
+
+  it('creates a dismiss error action', () => {
+    expect(dismissError()).toEqual({
+      type: Types.DISMISS_ERROR
     })
   })
 

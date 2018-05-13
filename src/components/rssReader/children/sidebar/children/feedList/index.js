@@ -20,9 +20,9 @@ class FeedList extends Component {
 
   render () {
     return (
-      <div className={Styles.feedListContainer}>
+      <ul className={Styles.feedListContainer}>
         {this.props.feeds.map(this.renderFeed.bind(this))}
-      </div>
+      </ul>
     )
   }
 }
