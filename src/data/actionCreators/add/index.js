@@ -33,12 +33,12 @@ export function addFeedSuccess (feed) {
 
 export function addFeedFailure (url) {
   return function (dispatch) {
-    displayError(`Failed to add feed at ${url}. Please double check the URL.`)
+    dispatch(displayError(`Failed to add feed at ${url}. Please double check the URL.`))
   }
 }
 
 export function addFeed (name, url) {
   return function (dispatch) {
-    fetchFeed(dispatch, name, url)
+    dispatch(fetchFeed(dispatch, name, url))
   }
 }
