@@ -38,7 +38,8 @@ export class RSSReader extends Component {
           feeds={this.props.feeds}
           addFeed={this.props.addFeed}
           removeFeed={this.props.removeFeed}
-          searchFeeds={this.props.searchFeeds} />
+          searchFeeds={this.props.searchFeeds}
+          displayError={this.props.displayError} />
         <Posts sortedFeeds={this.props.sortedFeeds} />
         {this.renderError()}
       </div>

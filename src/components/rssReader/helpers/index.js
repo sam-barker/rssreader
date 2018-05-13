@@ -2,7 +2,8 @@ import {
   addFeed,
   removeFeed,
   searchForFeed,
-  dismissError
+  dismissError,
+  displayError
 } from '../../../data/actionCreators'
 
 function debounce (func, wait) {
@@ -72,6 +73,7 @@ export function mapDispatchToProps (dispatch) {
     addFeed: (name, url) => { dispatch(addFeed(name, url)) },
     removeFeed: (name, url) => { dispatch(removeFeed(name, url)) },
     searchFeeds: debounce((name) => { dispatch(searchForFeed(name)) }, 500),
-    dismissError: () => { dispatch(dismissError()) }
+    dismissError: () => { dispatch(dismissError()) },
+    displayError: (text) => { dispatch(displayError(text)) }
   }
 }

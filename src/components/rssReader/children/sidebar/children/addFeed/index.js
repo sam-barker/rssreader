@@ -5,8 +5,7 @@ import Styles from './styles.scss'
 import {
   isValidUrl,
   isValidName,
-  isSubmitEnabled,
-  displayAlert
+  isSubmitEnabled
 } from './helpers'
 
 class AddFeed extends Component {
@@ -27,8 +26,16 @@ class AddFeed extends Component {
   }
 
   onAddSubmit () {
-    if (!isValidUrl(this.state)) return displayAlert('Invalid URL!')
-    if (!isValidName(this.state)) return displayAlert('Invalid name!')
+    if (!isValidUrl(this.state)) {
+      return this.props.displayError(
+        `"${this.state.url}" is not a valid url!`
+      )
+    }
+    if (!isValidName(this.state)) {
+      return this.props.displayError(
+        `"${this.state.feedName}" is not a valid name! Please use alphabetic charcters only.`
+      )
+    }
     this.props.addFeed(this.state.feedName, this.state.url)
     this.setState({feedName: '', url: ''})
   }
@@ -57,7 +64,8 @@ class AddFeed extends Component {
 }
 
 AddFeed.propTypes = {
-  addFeed: PropTypes.func.isRequired
+  addFeed: PropTypes.func.isRequired,
+  displayError: PropTypes.func.isRequired
 }
 
 export default AddFeed
