@@ -1,22 +1,8 @@
-.buttonsmall {
-  width: 30%;
-}
-
-.buttonmedium {
-  width: 50%;
-}
-
-.buttonlarge {
-  width: 70%;
-}
-
-.buttonxlarge {
-  width: 90%;
-}
-
-.buttonfull {
-  width: 100%;
-}
+.buttonsmall { width: 30%; }
+.buttonmedium { width: 50%; }
+.buttonlarge { width: 70%; }
+.buttonxlarge { width: 90%; }
+.buttonfull { width: 100%;}
 
 .button {
   color: white;
@@ -27,11 +13,7 @@
   height: 2.5em;
   font-size: .8125em;
   cursor: pointer;
-  
-  &:active {
-    background-color: #71bff7;
-  }
-
+  &:active { background-color: #71bff7; }
   &:disabled {
     cursor: not-allowed;
     background-color: grey;
