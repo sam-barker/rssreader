@@ -21,12 +21,6 @@ describe('<Feed /> tests', () => {
     expect(enzymeWrapper).toBeDefined()
   })
 
-  it('toggles a feed', () => {
-    const toggle = enzymeWrapper.find('input')
-    toggle.simulate('click')
-    expect(enzymeWrapper.state('toggled')).toBe(true)
-  })
-
   it('calls the remove callback when the remove icon clicked', () => {
     const remove = enzymeWrapper.find('div').last()
     remove.simulate('click')

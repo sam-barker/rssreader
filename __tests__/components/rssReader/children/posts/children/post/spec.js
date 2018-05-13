@@ -16,7 +16,8 @@ describe('<Post /> tests', () => {
       link: 'https://another-example.com',
       description: 'this is an example for testing',
       pubDate: '2018-01-01 10:10',
-      thumbnail: 'http://www.northeastjsconference.com/wp-content/uploads/2015/11/learn-javascript.png'
+      thumbnail: 'http://www.northeastjsconference.com/wp-content/uploads/2015/11/learn-javascript.png',
+      guid: 'https://google.com'
     }
     const enzymeWrapper = mount(<Post {...props} />)
     expect(enzymeWrapper).toBeDefined()
@@ -30,7 +31,8 @@ describe('<Post /> tests', () => {
       url: 'https://example.com',
       link: 'https://another-example.com',
       description: 'this is an example for testing',
-      pubDate: '2018-01-01 10:10'
+      pubDate: '2018-01-01 10:10',
+      guid: 'https://google.com'
     }
     const enzymeWrapper = mount(<Post {...props} />)
     expect(enzymeWrapper.find('img').length).toBe(0)

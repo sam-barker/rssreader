@@ -11,7 +11,8 @@ import {AddFeed} from '../../../../../../src/components/rssReader/children/sideb
 describe('<AddFeed /> tests', () => {
   it('renders correctly', () => {
     const props = {
-      addFeed: jest.fn()
+      addFeed: jest.fn(),
+      displayError: jest.fn()
     }
     const enzymeWrapper = mount(<AddFeed {...props} />)
     expect(enzymeWrapper).toBeDefined()

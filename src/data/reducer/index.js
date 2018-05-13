@@ -35,7 +35,6 @@ export default (state = initialState, action = {type: 'None'}) => {
     case ActionTypes.DISMISS_ERROR:
       return {
         ...state,
-        loading: false,
         error: null
       }
     case ActionTypes.DISPLAY_ERROR:
