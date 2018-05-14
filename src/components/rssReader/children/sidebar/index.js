@@ -1,25 +1,22 @@
-import React, {Component} from 'react'
+import React from 'react'
 import PropTypes from 'prop-types'
 import {Search, FeedList, AddFeed} from './children'
 import Styles from './styles.scss'
 
-class Sidebar extends Component {
-  constructor (props) {
-    super(props)
-    this.state = {}
-  }
-
-  render () {
-    return (
-      <aside className={Styles.sidebar}>
-        <div className={Styles.sidebarContent}>
-          <Search searchFeeds={this.props.searchFeeds} />
-          <FeedList feeds={this.props.feeds} removeFeed={this.props.removeFeed} />
-          <AddFeed addFeed={this.props.addFeed} displayError={this.props.displayError} />
-        </div>
-      </aside>
-    )
-  }
+/**
+ * Sidebar component
+ * @param {object} props - Component props
+ */
+function Sidebar (props) {
+  return (
+    <aside className={Styles.sidebar}>
+      <div className={Styles.sidebarContent}>
+        <Search searchFeeds={props.searchFeeds} />
+        <FeedList feeds={props.feeds} removeFeed={props.removeFeed} />
+        <AddFeed addFeed={props.addFeed} displayError={props.displayError} />
+      </div>
+    </aside>
+  )
 }
 
 Sidebar.defaultProps = {

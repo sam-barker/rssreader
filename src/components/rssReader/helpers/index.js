@@ -5,21 +5,12 @@ import {searchForFeed} from '../../../data/actionCreators/search'
 import {dismissError, displayError} from '../../../data/actionCreators/error'
 
 /**
- * Filters out feeds that dont match a name
- * @param {string} name - The feed name to filter against
- * @param {object} feed - The feed to check
+ * Filters out itemsthat dont match a name
+ * @param {string} name - The name to filter against
+ * @param {object} param1 - The name to check
  */
-function filterFeedByname (name, feed) {
-  return feed.name.toLowerCase().includes(name.toLowerCase())
-}
-
-/**
- * Filters out items that dont match a name
- * @param {string} name - The feed name to filter against
- * @param {object} item - The item to check
- */
-function filterItemsByName (name, item) {
-  return item.name.toLowerCase().includes(name.toLowerCase())
+function filterByName (filterName, {name}) {
+  return name.toLowerCase().includes(filterName.toLowerCase())
 }
 
 /**
@@ -30,7 +21,7 @@ function getFeeds (state) {
   return !state.searchTerm
     ? state.feeds
     : state.feeds.filter(
-      filterFeedByname.bind(this, state.searchTerm)
+      filterByName.bind(this, state.searchTerm)
     )
 }
 
@@ -42,7 +33,7 @@ function getItems (state) {
   return !state.searchTerm
     ? state.items
     : state.items.filter(
-      filterItemsByName.bind(this, state.searchTerm)
+      filterByName.bind(this, state.searchTerm)
     )
 }
 

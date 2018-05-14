@@ -3,12 +3,20 @@ import PropTypes from 'prop-types'
 import Styles from './styles.scss'
 import {Post} from './children'
 
-function renderPost (feed) {
+/**
+ * Renders a post
+ * @param {object} post - The post to render
+ */
+function renderPost (post) {
   return (
-    <Post key={feed.title} {...feed} />
+    <Post key={post.title} {...post} />
   )
 }
 
+/**
+ * Posts component
+ * @param {object} props - Component props
+ */
 function Posts (props) {
   return (
     <div className={Styles.postsContainer}>

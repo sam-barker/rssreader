@@ -41,7 +41,8 @@ describe('RSSReader - Helpers', () => {
             link: 'testlink',
             items: []
           }
-        ]
+        ],
+        items: []
       }
   
       const {feeds} = mapStateToProps(state)

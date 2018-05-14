@@ -1,30 +1,30 @@
-import React, {Component} from 'react'
+import React from 'react'
 import PropTypes from 'prop-types'
 import {Feed} from './children'
 import Styles from './styles.scss'
 
-class FeedList extends Component {
-  constructor (props) {
-    super(props)
-    this.state = {}
-  }
+/**
+ * Renders a feed
+ * @param {object} feed - The feed to render
+ */
+function renderFeed (props, feed) {
+  return !feed ? null : (
+    <Feed
+      key={`feed_${feed.name}`}
+      {...feed}
+      removeFeed={props.removeFeed} />
+  )
+}
 
-  renderFeed (feed) {
-    return !feed ? null : (
-      <Feed
-        key={`feed_${feed.name}`}
-        {...feed}
-        removeFeed={this.props.removeFeed} />
-    )
-  }
-
-  render () {
-    return (
-      <ul className={Styles.feedListContainer}>
-        {this.props.feeds.map(this.renderFeed.bind(this))}
-      </ul>
-    )
-  }
+/**
+ * FeedList component
+ */
+function FeedList (props) {
+  return (
+    <ul className={Styles.feedListContainer}>
+      {props.feeds.map(renderFeed.bind(this, props))}
+    </ul>
+  )
 }
 
 FeedList.defaultProps = {

@@ -8,6 +8,9 @@ import {
   isSubmitEnabled
 } from './helpers'
 
+/**
+ * AddFeed component
+ */
 class AddFeed extends Component {
   constructor (props) {
     super(props)
@@ -16,15 +19,27 @@ class AddFeed extends Component {
       url: ''
     }
 
+    this.bindHandlers()
+  }
+
+  bindHandlers () {
     this.onAddSubmit = this.onAddSubmit.bind(this)
     this.onFeedNameChange = this.onInputChange.bind(this, 'feedName')
     this.onUrlChange = this.onInputChange.bind(this, 'url')
   }
 
+  /**
+   * Handles changes in the input
+   * @param {string} prop - The name of the property to change
+   * @param {object} event - The event fired
+   */
   onInputChange (prop, event) {
     this.setState({[prop]: event.target.value})
   }
 
+  /**
+   * Handles form submission
+   */
   onAddSubmit () {
     if (!isValidUrl(this.state)) {
       return this.props.displayError(
@@ -40,11 +55,14 @@ class AddFeed extends Component {
     this.setState({feedName: '', url: ''})
   }
 
+  /**
+   * Renders the component
+   */
   render () {
     return (
-      <div className={Styles.addFeedContainer}>
-        <h2 className={Styles.titleText}>Add a new feed</h2>
-        <div className={Styles.addFeedInputContainer}>
+      <div className={Styles.addFeed}>
+        <h2 className={Styles.title}>Add a new feed</h2>
+        <div className={Styles.inputContainer}>
           <InputField
             value={this.state.feedName}
             onChange={this.onFeedNameChange}

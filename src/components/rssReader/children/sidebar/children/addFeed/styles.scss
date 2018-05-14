@@ -1,20 +1,16 @@
-.addFeedContainer {
+.addFeed {
   margin-top: 3em;
   flex-grow: 1;
 }
 
-.titleText {
+.title {
   line-height: 25px;
   font-size: .8125em;
   text-align: center;
   color: white;
 }
 
-.addFeedInputContainer {
+.inputContainer {
   width: 90%;
   margin-left: 5%;
-}
-
-.addFeedInput {
-  padding-bottom: 1em;
 }
