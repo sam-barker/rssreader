@@ -34,7 +34,6 @@ class Search extends Component {
     return (
       <div className={Styles.searchInputField}>
         <InputField
-          type={'search'}
           placeholder={'Filter your feeds ...'}
           value={this.state.searchValue}
           onChange={this.onSearchChange} />
