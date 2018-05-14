@@ -51,6 +51,6 @@ export function addFeedFailure (url) {
  */
 export function addFeed (name, url) {
   return function (dispatch) {
-    dispatch(fetchFeed(dispatch, name, url))
+    fetchFeed(dispatch, name, url)
   }
 }

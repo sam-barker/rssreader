@@ -9,20 +9,26 @@ import {
   mapDispatchToProps
 } from './helpers'
 
+/**
+ * RSSREader component class
+ */
 export class RSSReader extends Component {
   static defaultProps = {
     feeds: [],
-    sortedFeeds: []
+    items: []
   }
 
   static propTypes = {
     feeds: PropTypes.arrayOf(PropTypes.object),
-    sortedFeeds: PropTypes.arrayOf(PropTypes.object),
+    items: PropTypes.arrayOf(PropTypes.object),
     addFeed: PropTypes.func.isRequired,
     removeFeed: PropTypes.func.isRequired,
     searchFeeds: PropTypes.func.isRequired
   }
 
+  /**
+   * Renders a modal containing an error if available
+   */
   renderError () {
     return !this.props.error ? null : (
       <Modal
@@ -31,6 +37,9 @@ export class RSSReader extends Component {
     )
   }
 
+  /**
+   * Renders the component
+   */
   render () {
     return (
       <div className={Styles.rssReaderContainer}>
@@ -40,7 +49,7 @@ export class RSSReader extends Component {
           removeFeed={this.props.removeFeed}
           searchFeeds={this.props.searchFeeds}
           displayError={this.props.displayError} />
-        <Posts sortedFeeds={this.props.sortedFeeds} />
+        <Posts items={this.props.items} />
         {this.renderError()}
       </div>
     )

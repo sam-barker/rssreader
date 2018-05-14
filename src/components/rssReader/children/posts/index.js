@@ -13,18 +13,18 @@ function Posts (props) {
   return (
     <div className={Styles.postsContainer}>
       <div className={Styles.posts}>
-        {props.sortedFeeds.map(renderPost)}
+        {props.items.map(renderPost)}
       </div>
     </div>
   )
 }
 
 Posts.defaultProps = {
-  sortedFeeds: []
+  items: []
 }
 
 Posts.propTypes = {
-  sortedFeeds: PropTypes.arrayOf(PropTypes.object)
+  items: PropTypes.arrayOf(PropTypes.object)
 }
 
 export default Posts

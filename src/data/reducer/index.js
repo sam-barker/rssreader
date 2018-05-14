@@ -1,6 +1,6 @@
 import ActionTypes from '../actionTypes'
 import initialState from '../initialState'
-import {removeFeed} from './helpers'
+import {removeFeed, addFeed, addItems, removeItems} from './helpers'
 
 /**
  * Reducer for the application
@@ -10,9 +10,9 @@ import {removeFeed} from './helpers'
 export default function (state = initialState, action = {type: ActionTypes.NONE}) {
   switch (action.type) {
     case ActionTypes.REMOVE_FEED_SUCCESS:
-      return {...state, feeds: removeFeed(state, action)}
+      return {...state, feeds: removeFeed(state, action), items: removeItems(state, action)}
     case ActionTypes.ADD_FEED_SUCCESS:
-      return {...state, feeds: state.feeds.concat(action.feed)}
+      return {...state, feeds: addFeed(state, action), items: addItems(state, action)}
     case ActionTypes.SEARCH_FOR_FEED:
       return {...state, searchTerm: action.name}
     case ActionTypes.DISMISS_ERROR:
