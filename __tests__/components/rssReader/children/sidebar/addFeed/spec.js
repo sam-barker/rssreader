@@ -7,11 +7,13 @@
 import React from 'react'
 import {mount} from 'enzyme'
 import {AddFeed} from '../../../../../../src/components/rssReader/children/sidebar/children'
+import { displayError } from '../../../../../../src/data/actionCreators/error/index';
 
 describe('<AddFeed /> tests', () => {
   const props = {
     addFeed: jest.fn(),
-    displayError: jest.fn()
+    displayError: jest.fn(),
+    hasFeed: jest.fn()
   }
   const enzymeWrapper = mount(<AddFeed {...props} />)
 
@@ -53,5 +55,13 @@ describe('<AddFeed /> tests', () => {
     const submitButton = enzymeWrapper.find('SubmitButton').at(0).find('button').at(0)
     submitButton.simulate('click')
     expect(props.addFeed).toHaveBeenCalled()
+  })
+
+  it('calls displayError when a feed is repetitively added', () => {
+    enzymeWrapper.setProps({hasFeed: () => true})
+    enzymeWrapper.setState({feedName: 'hello', url: 'https://google.com'})
+    enzymeWrapper.update()
+    enzymeWrapper.instance().onAddSubmit()
+    expect(props.displayError).toBeCalled()
   })
 })

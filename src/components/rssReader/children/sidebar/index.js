@@ -2,6 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import {Search, FeedList, AddFeed} from './children'
 import Styles from './styles.scss'
+import {hasFeed} from './helpers'
 
 /**
  * Sidebar component
@@ -12,8 +13,13 @@ function Sidebar (props) {
     <aside className={Styles.sidebar}>
       <div className={Styles.sidebarContent}>
         <Search searchFeeds={props.searchFeeds} />
-        <FeedList feeds={props.feeds} removeFeed={props.removeFeed} />
-        <AddFeed addFeed={props.addFeed} displayError={props.displayError} />
+        <FeedList
+          feeds={props.feeds}
+          removeFeed={props.removeFeed} />
+        <AddFeed
+          addFeed={props.addFeed}
+          displayError={props.displayError}
+          hasFeed={hasFeed.bind(this, props.feeds)} />
       </div>
     </aside>
   )
