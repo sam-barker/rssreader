@@ -41,16 +41,17 @@ class AddFeed extends Component {
    * Handles form submission
    */
   onAddSubmit () {
-    if (!isValidUrl(this.state)) {
-      return this.props.displayError(
-        `"${this.state.url}" is not a valid url!`
-      )
-    }
+    if (!isValidUrl(this.state)) return this.props.displayError(`"${this.state.url}" is not a valid url!`)
     if (!isValidName(this.state)) {
       return this.props.displayError(
         `"${this.state.feedName}" is not a valid name! Please use alphabetic charcters only.`
       )
     }
+
+    if (this.props.hasFeed(this.state.feedName, this.state.url)) {
+      return this.props.displayError('This feed has already been added.')
+    }
+
     this.props.addFeed(this.state.feedName, this.state.url)
     this.setState({feedName: '', url: ''})
   }
@@ -84,6 +85,7 @@ class AddFeed extends Component {
 
 AddFeed.propTypes = {
   addFeed: PropTypes.func.isRequired,
+  hasFeed: PropTypes.func.isRequired,
   displayError: PropTypes.func.isRequired
 }
 
