@@ -1,6 +1,7 @@
 export default {
   feeds: [],
+  items: [],
   searchTerm: '',
-  loading: false,
-  error: false
+  error: false,
+  fetching: false
 }

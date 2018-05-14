@@ -2,16 +2,25 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import Styles from './styles.scss'
 import {LinkIcon} from '../../../../../icons'
-import {getDateString} from './helpers'
+import {goTo, getDateString} from './helpers'
 
+/**
+ * Renders the thumbnail
+ * @param {object} param0 - object containing the thumbnail
+ */
 function renderThumbnail ({thumbnail}) {
-  return !thumbnail ? null : (
+  if (!thumbnail) return null
+  return (
     <div className={Styles.thumbnailContainer}>
       <img src={thumbnail} className={Styles.thumbnail} />
     </div>
   )
 }
 
+/**
+ * Renders the post details
+ * @param {object} param0 - object containing title and description
+ */
 function renderDetails ({title, description}) {
   return (
     <div className={Styles.details}>
@@ -25,6 +34,10 @@ function renderDetails ({title, description}) {
   )
 }
 
+/**
+ * Renders the post name
+ * @param {object} param0 - object containing the link, name and publish date of the post
+ */
 function renderName ({link, name, pubDate}) {
   return (
     <div className={Styles.nameContainer}>
@@ -41,16 +54,16 @@ function renderName ({link, name, pubDate}) {
   )
 }
 
-function onPostClick ({guid}) {
-  window.open(guid, '_blank')
-}
-
+/**
+ * Post component
+ * @param {object} props - component props
+ */
 function Post (props) {
   return (
     <div
       key={props.title}
       className={Styles.post}
-      onClick={onPostClick.bind(this, props)}>
+      onClick={goTo.bind(this, props)}>
       {renderName(props)}
       {renderThumbnail(props)}
       {renderDetails(props)}

@@ -3,28 +3,36 @@ import PropTypes from 'prop-types'
 import Styles from './styles.scss'
 import {Post} from './children'
 
-function renderPost (feed) {
+/**
+ * Renders a post
+ * @param {object} post - The post to render
+ */
+function renderPost (post) {
   return (
-    <Post key={feed.title} {...feed} />
+    <Post key={post.title} {...post} />
   )
 }
 
+/**
+ * Posts component
+ * @param {object} props - Component props
+ */
 function Posts (props) {
   return (
     <div className={Styles.postsContainer}>
       <div className={Styles.posts}>
-        {props.sortedFeeds.map(renderPost)}
+        {props.items.map(renderPost)}
       </div>
     </div>
   )
 }
 
 Posts.defaultProps = {
-  sortedFeeds: []
+  items: []
 }
 
 Posts.propTypes = {
-  sortedFeeds: PropTypes.arrayOf(PropTypes.object)
+  items: PropTypes.arrayOf(PropTypes.object)
 }
 
 export default Posts

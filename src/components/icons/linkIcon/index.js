@@ -1,6 +1,10 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
+/**
+ * Link icon
+ * @param {object} props - Component props
+ */
 function LinkIcon (props) {
   return (
     <svg

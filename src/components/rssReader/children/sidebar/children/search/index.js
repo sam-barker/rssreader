@@ -4,7 +4,10 @@ import {SearchIcon} from '../../../../../icons'
 import {InputField} from '../../../../../ui'
 import Styles from './styles.scss'
 
-class Sidebar extends Component {
+/**
+ * Search component
+ */
+class Search extends Component {
   constructor (props) {
     super(props)
     this.state = {
@@ -14,12 +17,19 @@ class Sidebar extends Component {
     this.onSearchChange = this.onSearchChange.bind(this)
   }
 
+  /**
+   * Handles search value change
+   * @param {object} evt - the event fired on input change
+   */
   onSearchChange (evt) {
     const newValue = evt.target.value
     this.setState({searchValue: newValue})
     this.props.searchFeeds(newValue)
   }
 
+  /**
+   * Renders the search input field
+   */
   renderSearchInput () {
     return (
       <div className={Styles.searchInputField}>
@@ -32,6 +42,9 @@ class Sidebar extends Component {
     )
   }
 
+  /**
+   * Renders the search icon
+   */
   renderSearchIcon () {
     return (
       <div className={Styles.searchIconContainer}>
@@ -40,6 +53,9 @@ class Sidebar extends Component {
     )
   }
 
+  /**
+   * Renders the component
+   */
   render () {
     return (
       <div className={Styles.searchContainer}>
@@ -51,8 +67,8 @@ class Sidebar extends Component {
   }
 }
 
-Sidebar.propTypes = {
+Search.propTypes = {
   searchFeeds: PropTypes.func.isRequired
 }
 
-export default Sidebar
+export default Search
