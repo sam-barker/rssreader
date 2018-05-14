@@ -1,19 +1,10 @@
 /**
- * Filters feeds out that match name and url
- * @param {object} action - The action containing the feed details to filter against
- * @param {object} feed - The current feed in the filter
+ * Filters out items that match name and url
+ * @param {object} action - The action containing the details to filter against
+ * @param {object} item - The current item in the filter
  */
-function feedFilter (action, feed) {
-  return feed.name !== action.feed.name || feed.url !== action.feed.url
-}
-
-/**
- * Filters items out that match name and url
- * @param {object} action - The action containing the item details to filter against
- * @param {object} feed - The current item in the filter
- */
-function itemFilter (action, item) {
-  return item.name !== action.feed.name || item.url !== action.feed.url
+function filterNameUrl (action, {name, url}) {
+  return name !== action.feed.name || url !== action.feed.url
 }
 
 /**
@@ -33,7 +24,7 @@ function compareDate (item1, item2) {
  * @param {object} action - The action fired
  */
 export function removeFeed (state, action) {
-  return state.feeds.filter(feedFilter.bind(this, action))
+  return state.feeds.filter(filterNameUrl.bind(this, action))
 }
 
 /**
@@ -42,7 +33,7 @@ export function removeFeed (state, action) {
  * @param {object} action - The action fired
  */
 export function removeItems (state, action) {
-  return state.items.filter(itemFilter.bind(this, action))
+  return state.items.filter(filterNameUrl.bind(this, action))
 }
 
 /**

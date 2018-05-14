@@ -35,15 +35,15 @@ describe('Action Creator tests - Add', () => {
     )
   })
 
-  // it('creates an addFeed action', () => {
-  //   const dispatch = jest.fn()
-  //   const name = 'name'
-  //   const url = 'example'
-  //   const dispatchable = addFeed(name, url)
-  //   fetchMock.getOnce(`https://api.rss2json.com/v1/api.json?rss_url=${url}`, {
-  //     body: {name: 'test'}, headers: { 'content-type': 'application/json' }
-  //   })
-  //   dispatchable(dispatch)
-  //   expect(dispatch).toHaveBeenCalled()
-  // })
+  it('creates an addFeed action', () => {
+    const dispatch = jest.fn()
+    const name = 'name'
+    const url = 'example'
+    const dispatchable = addFeed(name, url)
+    fetchMock.getOnce(`https://api.rss2json.com/v1/api.json?rss_url=${url}`, {
+      body: {name: 'test', url}, status: 200, headers: { 'content-type': 'application/json' }
+    })
+    dispatchable(dispatch)
+    expect(dispatch).toHaveBeenCalled()
+  })
 })

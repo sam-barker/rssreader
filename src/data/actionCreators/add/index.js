@@ -4,23 +4,12 @@ import {API_LOCATION} from '../constants'
 import {displayError} from '../error'
 
 /**
- * Fetches a single RSS Feed
- * @param {function} dispatch - The dispatch function used for async actions
- * @param {string} name - The RSS feed name
- * @param {string} url - The RSS feed url
+ * Fires an ADD_FEED_START action
  */
-function fetchFeed (dispatch, name, url) {
-  Reqwest({
-    method: 'GET',
-    url: `${API_LOCATION}${url}`
-  })
-    .then((response) => JSON.parse(response))
-    .then((json) => {
-      dispatch(addFeedSuccess({ ...json, name, url }))
-    })
-    .catch(() => {
-      dispatch(addFeedFailure(url))
-    })
+export function addFeedStart () {
+  return {
+    type: ActionTypes.ADD_FEED_START
+  }
 }
 
 /**
@@ -51,6 +40,12 @@ export function addFeedFailure (url) {
  */
 export function addFeed (name, url) {
   return function (dispatch) {
-    fetchFeed(dispatch, name, url)
+    dispatch(addFeedStart())
+    const onSuccess = (json) => dispatch(addFeedSuccess({ ...json, name, url }))
+    const onCatch = () => dispatch(addFeedFailure(url))
+    Reqwest({method: 'GET', url: `${API_LOCATION}${url}`})
+      .then(JSON.parse)
+      .then(onSuccess)
+      .catch(onCatch)
   }
 }

@@ -24,7 +24,8 @@ describe('Reducer tests', () => {
         {name: 'test2', url: 'https://f.com'},
         {name: 'test3', url: 'https://g.com'}
       ],
-      items: []
+      items: [],
+      fetching: false
     }
     expectReducer(
       state,
@@ -40,59 +41,37 @@ describe('Reducer tests', () => {
           state.feeds[0],
           state.feeds[2]
         ],
-        items: []
+        items: [],
+        fetching: false
       }
     )
   })
 
-  // it('should handle adding a feed successfully', () => {
-  //   const feed = {
-  //     name: 'test4',
-  //     url: 'https://h.com',
-  //     feed: {
-  //       link: 'test link'
-  //     },
-  //     items: [
-  //       {
-  //         title: 'hello'
-  //       },
-  //       {
-  //         title: 'hello 2'
-  //       }
-  //     ]
-  //   }
-  //   const action = {type: ActionTypes.ADD_FEED_SUCCESS, feed}
-  //   const state = {
-  //     feeds: [],
-  //     items: []
-  //   }
-
-  //   const expectedItems = [
-  //     {
-  //       title: 'hello',
-  //       name: feed.name,
-  //       url: feed.url,
-  //       link: feed.feed.link
-  //     },
-  //     {
-  //       title: 'hello 2',
-  //       name: feed.name,
-  //       url: feed.url,
-  //       link: feed.feed.link
-  //     }
-  //   ]
-
-  //   const expectedState = {
-  //     ...state,
-  //     feeds: state.feeds.concat({
-  //       ...feed,
-  //       items: expectedItems
-  //     }),
-  //     items: expectedItems
-  //   }
-
-  //   expectReducer(state, action, expectedState)
-  // })
+  it('should handle adding a feed successfully', () => {
+    const state = {
+      feeds: [
+        {
+          name: 'Hello',
+          url: 'https://google.com'
+        },
+        {
+          name: 'Goodbye',
+          url: 'https://facebook.com'
+        }
+      ],
+      items: []
+    }
+    const action = {
+      feed: {
+        name: 'item test again',
+        url: 'https://twitter.com',
+        items: []
+      },
+      type: ActionTypes.ADD_FEED_SUCCESS
+    }
+    const expectedFeeds = state.feeds.concat(action.feed)
+    expect(reducer(state, action).feeds).toEqual(expectedFeeds)
+  })
 
   it('should handle displaying errors', () => {
     const action = {type: ActionTypes.DISPLAY_ERROR, text: 'Error example'}
@@ -141,6 +120,24 @@ describe('Reducer tests', () => {
     const expectedState = {
       ...state,
       error: null
+    }
+
+    expectReducer(state, action, expectedState)
+  })
+
+  it('should handle starting a feed add', () => {
+    const action = {type: ActionTypes.ADD_FEED_START}
+    const state = {
+      feeds: [
+        {name: 'test1', url: 'https://e.com'},
+        {name: 'test2', url: 'https://f.com'},
+        {name: 'test3', url: 'https://g.com'}
+      ],
+      fetching: false
+    }
+    const expectedState = {
+      ...state,
+      fetching: true
     }
 
     expectReducer(state, action, expectedState)

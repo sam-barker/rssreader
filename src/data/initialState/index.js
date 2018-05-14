@@ -2,5 +2,6 @@ export default {
   feeds: [],
   items: [],
   searchTerm: '',
-  error: false
+  error: false,
+  fetching: false
 }

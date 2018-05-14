@@ -10,7 +10,7 @@ import {Posts} from '../../../../../src/components/rssReader/children'
 describe('<Posts /> tests', () => {
   it('renders correctly', () => {
     const props = {
-      sortedFeeds: [
+      items: [
         {
           name: 'Name',
           title: 'Title',
